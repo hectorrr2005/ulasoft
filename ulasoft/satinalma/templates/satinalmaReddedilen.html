@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-Satınalma Onay Bekleyenler
+Satınalma Reddedilenler
 {% endblock title %}
 {% block customcss %}
 <link rel="stylesheet" href="{% static 'bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css' %}">
@@ -9,7 +9,7 @@ Satınalma Onay Bekleyenler
 {% block content %}
 <section class="content-header">
     <h1>
-      Satınalma Onay Bekleyenler
+      Satınalma Reddedilenler
       <small>Optional description</small>
     </h1>
     <ol class="breadcrumb">
@@ -24,7 +24,7 @@ Satınalma Onay Bekleyenler
       <div class="col-xs-12"> 
         <div class="box">
           <div class="box-header">
-            <h3 class="box-title">Onay Bekleyen Satınalmalar</h3>
+            <h3 class="box-title">Reddedilen Satınalmalar</h3>
           </div>
           <!-- /.box-header -->
           <div class="box-body">
@@ -39,7 +39,6 @@ Satınalma Onay Bekleyenler
                 <th>Miktar</th>
                 <th>Birim Fiyat</th>
                 <th>Reddedilme Nedeni</th>
-                <th>Onayla</th>
               </tr>
               </thead>
               <tbody>
@@ -58,15 +57,7 @@ Satınalma Onay Bekleyenler
                     </td>
                     <td>{{row.65}} {{row.50}}</td>
                     <td>{{row.77|floatformat:2}} {{row.85}}</td>
-                    {% if row.115 is None %}
-                        <td></td>
-                    {% else %}
-                        <td>{{row.115}}</td>
-                    {% endif %} 
-                    <td><a href="{% url 'onayla' row.0 %}">
-                        <span class="glyphicon glyphicon-ok"></span>
-                      </a>
-                    </td>            
+                    <td>{{row.115}}</td>          
                 </tr>
               {% endfor %}
               </tbody>
@@ -97,7 +88,7 @@ Satınalma Onay Bekleyenler
         'searching'   : true,
         'ordering'    : true,
         'info'        : true,
-        'autoWidth'   : true,
+        'autoWidth'   : false,
         'select': true,
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
